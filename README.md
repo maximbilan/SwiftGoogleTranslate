@@ -20,3 +20,8 @@ Copy <i>SwiftGoogleTranslate.swift</i> to your project.
 
 ## Initialization
 
+First of all you have to generate API key to use Google Cloud services in the <a href="https://cloud.google.com/translate/">console</a>.
+And then use the following code:
+<pre>
+SwiftGoogleTranslate.shared.start(with: "API_KEY_HERE")
+</pre>
