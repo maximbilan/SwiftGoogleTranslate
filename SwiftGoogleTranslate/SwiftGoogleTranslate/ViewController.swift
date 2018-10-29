@@ -13,10 +13,22 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		// Translates a text.
-		SwiftGoogleTranslate.shared.translate("Hello!", "es", "en") { (text, error) in
-			if let t = text {
-				print(t)
+		/// Translates a text.
+//		SwiftGoogleTranslate.shared.translate("Hello!", "es", "en") { (text, error) in
+//			if let t = text {
+//				print(t)
+//			}
+//		}
+		
+		/// Detects a language.
+		SwiftGoogleTranslate.shared.detect("¡Hola!") { (detections, error) in
+			if let detections = detections {
+				for detection in detections {
+					print(detection.language)
+					print(detection.isReliable)
+					print(detection.confidence)
+					print("---")
+				}
 			}
 		}
 		

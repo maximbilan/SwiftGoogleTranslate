@@ -14,6 +14,19 @@ open class SwiftGoogleTranslate {
 	/// Shared instance.
 	static let shared = SwiftGoogleTranslate()
 
+	/// Language response structure.
+	public struct Language {
+		let language: String
+		let name: String
+	}
+	
+	/// Detect response structure.
+	public struct Detection {
+		let language: String
+		let isReliable: Bool
+		let confidence: Float
+	}
+	
 	/// API structure.
 	private struct API {
 		/// Base Google Translation API url.
@@ -38,12 +51,6 @@ open class SwiftGoogleTranslate {
 		}
 	}
 	
-	/// Language response structure.
-	public struct Language {
-		let language: String
-		let name: String
-	}
-	
 	/// API key.
 	private var apiKey: String!
 	/// Default URL session.
@@ -55,7 +62,7 @@ open class SwiftGoogleTranslate {
 		- Parameters:
 			- apiKey: A valid API key to handle requests for this API. If you are using OAuth 2.0 service account credentials (recommended), do not supply this parameter.
 	*/
-	func start(with apiKey: String) {
+	public func start(with apiKey: String) {
 		self.apiKey = apiKey
 	}
 	
@@ -69,7 +76,7 @@ open class SwiftGoogleTranslate {
 			- source: The language of the source text. If the source language is not specified, the API will attempt to detect the source language automatically and return it within the response.
 			- model: The translation model. Can be either base to use the Phrase-Based Machine Translation (PBMT) model, or nmt to use the Neural Machine Translation (NMT) model. If omitted, then nmt is used. If the model is nmt, and the requested language translation pair is not supported for the NMT model, then the request is translated using the base model.
 	*/
-	func translate(_ q: String, _ target: String, _ source: String, _ format: String = "text", _ model: String = "base", _ completion: @escaping ((_ text: String?, _ error: Error?) -> Void)) {
+	public func translate(_ q: String, _ target: String, _ source: String, _ format: String = "text", _ model: String = "base", _ completion: @escaping ((_ text: String?, _ error: Error?) -> Void)) {
 		guard var urlComponents = URLComponents(string: API.translate.url) else {
 			completion(nil, nil)
 			return
@@ -112,6 +119,58 @@ open class SwiftGoogleTranslate {
 	}
 	
 	/**
+		Detects the language of text within a request.
+	
+		- Parameters:
+			- q: The input text upon which to perform language detection. Repeat this parameter to perform language detection on multiple text inputs.
+	*/
+	public func detect(_ q: String, _ completion: @escaping ((_ languages: [Detection]?, _ error: Error?) -> Void)) {
+		guard var urlComponents = URLComponents(string: API.detect.url) else {
+			completion(nil, nil)
+			return
+		}
+		
+		var queryItems = [URLQueryItem]()
+		queryItems.append(URLQueryItem(name: "key", value: apiKey))
+		queryItems.append(URLQueryItem(name: "q", value: q))
+		urlComponents.queryItems = queryItems
+		
+		guard let url = urlComponents.url else {
+			completion(nil, nil)
+			return
+		}
+		
+		var urlRequest = URLRequest(url: url)
+		urlRequest.httpMethod = API.detect.method
+		
+		let task = session.dataTask(with: urlRequest) { (data, response, error) in
+			guard let data = data,								// is there data
+				let response = response as? HTTPURLResponse,	// is there HTTP response
+				(200 ..< 300) ~= response.statusCode,			// is statusCode 2XX
+				error == nil else {								// was there no error, otherwise ...
+					completion(nil, error)
+					return
+			}
+			
+			guard let object = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any], let d = object["data"] as? [String: Any], let detections = d["detections"] as? [[[String: Any]]] else {
+				completion(nil, error)
+				return
+			}
+			
+			var result = [Detection]()
+			for languageDetections in detections {
+				for detection in languageDetections {
+					if let language = detection["language"] as? String, let isReliable = detection["isReliable"] as? Bool, let confidence = detection["confidence"] as? Float {
+						result.append(Detection(language: language, isReliable: isReliable, confidence: confidence))
+					}
+				}
+			}
+			completion(result, nil)
+		}
+		task.resume()
+	}
+	
+	/**
 		Returns a list of supported languages for translation.
 	
 		- Parameters:
@@ -119,7 +178,7 @@ open class SwiftGoogleTranslate {
 			- model: The translation model of the supported languages. Can be either base to return languages supported by the Phrase-Based Machine Translation (PBMT) model, or nmt to return languages supported by the Neural Machine Translation (NMT) model. If omitted, then all supported languages are returned. Languages supported by the NMT model can only be translated to or from English (en).
 			- completion: A completion closure with an array of Language structures and an error if there is.
 	*/
-	func languages(_ target: String = "en", _ model: String = "base", _ completion: @escaping ((_ languages: [Language]?, _ error: Error?) -> Void)) {
+	public func languages(_ target: String = "en", _ model: String = "base", _ completion: @escaping ((_ languages: [Language]?, _ error: Error?) -> Void)) {
 		guard var urlComponents = URLComponents(string: API.languages.url) else {
 			completion(nil, nil)
 			return
