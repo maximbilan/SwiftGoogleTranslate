@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = "SwiftGoogleTranslate"
-s.version      = "0.1"
+s.version      = "0.1.1"
 s.summary      = "SwiftGoogleTranslate"
 s.description  = "A framework to use Cloud Translation API by Google"
 s.homepage     = "https://github.com/maximbilan/SwiftGoogleTranslate"

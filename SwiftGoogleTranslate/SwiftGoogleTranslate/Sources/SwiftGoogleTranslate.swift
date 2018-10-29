@@ -9,22 +9,22 @@
 import Foundation
 
 /// A helper class for using Google Translate API.
-open class SwiftGoogleTranslate {
+public class SwiftGoogleTranslate {
 	
 	/// Shared instance.
-	static let shared = SwiftGoogleTranslate()
+	public static let shared = SwiftGoogleTranslate()
 
 	/// Language response structure.
 	public struct Language {
-		let language: String
-		let name: String
+		public let language: String
+		public let name: String
 	}
 	
 	/// Detect response structure.
 	public struct Detection {
-		let language: String
-		let isReliable: Bool
-		let confidence: Float
+		public let language: String
+		public let isReliable: Bool
+		public let confidence: Float
 	}
 	
 	/// API structure.
