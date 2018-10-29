@@ -14,11 +14,11 @@ class ViewController: UIViewController {
 		super.viewDidLoad()
 		
 		/// Translates a text.
-//		SwiftGoogleTranslate.shared.translate("Hello!", "es", "en") { (text, error) in
-//			if let t = text {
-//				print(t)
-//			}
-//		}
+		SwiftGoogleTranslate.shared.translate("Hello!", "es", "en") { (text, error) in
+			if let t = text {
+				print(t)
+			}
+		}
 		
 		/// Detects a language.
 		SwiftGoogleTranslate.shared.detect("¡Hola!") { (detections, error) in
@@ -33,17 +33,15 @@ class ViewController: UIViewController {
 		}
 		
 		/// Prints available languages.
-//		SwiftGoogleTranslate.shared.languages { (languages, error) in
-//			if let languages = languages {
-//				for language in languages {
-//					print(language.language)
-//					print(language.name)
-//					print("---")
-//				}
-//			}
-//		}
-		
-		
+		SwiftGoogleTranslate.shared.languages { (languages, error) in
+			if let languages = languages {
+				for language in languages {
+					print(language.language)
+					print(language.name)
+					print("---")
+				}
+			}
+		}
 	}
 
 }
