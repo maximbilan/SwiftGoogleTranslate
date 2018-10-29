@@ -8,6 +8,6 @@ s.license      = { :type => "MIT" }
 s.author       = { "Maxim Bilan" => "maximb.mail@gmail.com" }
 s.platform     = :ios, "8.0"
 s.source       = { :git => "https://github.com/maximbilan/SwiftGoogleTranslate.git", :tag => s.version.to_s }
-s.source_files = "Classes", "SwiftGoogleTranslate/Sources/**/*.{swift}"
+s.source_files = "Classes", "SwiftGoogleTranslate/SwiftGoogleTranslate/Sources/**/*.{swift}"
 s.requires_arc = true
 end
