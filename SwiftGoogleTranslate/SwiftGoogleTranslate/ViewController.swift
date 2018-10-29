@@ -12,7 +12,16 @@ class ViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
+		
+		SwiftGoogleTranslate.shared.languages { (languages, error) in
+			if let languages = languages {
+				for language in languages {
+					print(language.language)
+					print(language.name)
+					print("---")
+				}
+			}
+		}
 	}
 
 
