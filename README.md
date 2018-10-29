@@ -67,4 +67,4 @@ SwiftGoogleTranslate.shared.languages { (languages, error) in
 
 ## License
 
-<b>SwiftGoogleTranslate</b> is available under the MIT license. See the LICENSE file for more info.
+<i>SwiftGoogleTranslate</i> is available under the MIT license. See the LICENSE file for more info.
