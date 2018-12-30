@@ -16,6 +16,12 @@ pod 'SwiftGoogleTranslate'
 <pre>
 github "maximbilan/SwiftGoogleTranslate"
 </pre>
+<b>Swift Package Manager:</b>
+<pre>
+dependencies: [
+    .package(url: "https://github.com/maximbilan/SwiftGoogleTranslate", from: "0.2.2"))
+]
+</pre>
 <b>Manual:</b>
 <pre>
 Copy <i>SwiftGoogleTranslate.swift</i> to your project.
