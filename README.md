@@ -12,6 +12,10 @@ A framework to use <a href="https://cloud.google.com/translate/docs/reference/re
 <pre>
 pod 'SwiftGoogleTranslate'
 </pre>
+<b>Carthage:</b>
+<pre>
+github "maximbilan/SwiftGoogleTranslate"
+</pre>
 <b>Manual:</b>
 <pre>
 Copy <i>SwiftGoogleTranslate.swift</i> to your project.
