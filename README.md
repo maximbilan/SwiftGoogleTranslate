@@ -6,6 +6,7 @@
 [![CocoaPods](https://img.shields.io/cocoapods/dt/SwiftGoogleTranslate.svg)](https://cocoapods.org/pods/SwiftGoogleTranslate)
 
 A framework to use <a href="https://cloud.google.com/translate/docs/reference/rest">Cloud Translation API by Google</a> in Swift.
+:snowman::frog::penguin::whale::turtle:
 
 ## Installation
 <b>CocoaPods:</b>
