@@ -40,7 +40,7 @@
 		94E74475218728F5007149B5 = {
 			isa = PBXGroup;
 			children = (
-				94E74480218728F5007149B5 /* SwiftGoogleTranslate */,
+				94E74480218728F5007149B5 /* SwiftGoogleTranslateDemo */,
 				94E7447F218728F5007149B5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,7 +53,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		94E74480218728F5007149B5 /* SwiftGoogleTranslate */ = {
+		94E74480218728F5007149B5 /* SwiftGoogleTranslateDemo */ = {
 			isa = PBXGroup;
 			children = (
 				94E7449B21874277007149B5 /* Sources */,
@@ -64,7 +64,7 @@
 				94E7448A218728FA007149B5 /* LaunchScreen.storyboard */,
 				94E7448D218728FA007149B5 /* Info.plist */,
 			);
-			path = SwiftGoogleTranslate;
+			path = SwiftGoogleTranslateDemo;
 			sourceTree = "<group>";
 		};
 		94E7449B21874277007149B5 /* Sources */ = {
@@ -296,7 +296,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 828XSMPA74;
-				INFOPLIST_FILE = SwiftGoogleTranslate/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SwiftGoogleTranslateDemo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -315,7 +315,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 828XSMPA74;
-				INFOPLIST_FILE = SwiftGoogleTranslate/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SwiftGoogleTranslateDemo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
