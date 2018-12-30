@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		94E7447E218728F5007149B5 /* SwiftGoogleTranslate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftGoogleTranslate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94E7447E218728F5007149B5 /* SwiftGoogleTranslateDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftGoogleTranslateDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94E74481218728F5007149B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94E74483218728F5007149B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		94E74486218728F5007149B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		94E7447F218728F5007149B5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				94E7447E218728F5007149B5 /* SwiftGoogleTranslate.app */,
+				94E7447E218728F5007149B5 /* SwiftGoogleTranslateDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,9 +78,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		94E7447D218728F5007149B5 /* SwiftGoogleTranslate */ = {
+		94E7447D218728F5007149B5 /* SwiftGoogleTranslateDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 94E74490218728FA007149B5 /* Build configuration list for PBXNativeTarget "SwiftGoogleTranslate" */;
+			buildConfigurationList = 94E74490218728FA007149B5 /* Build configuration list for PBXNativeTarget "SwiftGoogleTranslateDemo" */;
 			buildPhases = (
 				94E7447A218728F5007149B5 /* Sources */,
 				94E7447B218728F5007149B5 /* Frameworks */,
@@ -90,9 +90,9 @@
 			);
 			dependencies = (
 			);
-			name = SwiftGoogleTranslate;
+			name = SwiftGoogleTranslateDemo;
 			productName = SwiftGoogleTranslate;
-			productReference = 94E7447E218728F5007149B5 /* SwiftGoogleTranslate.app */;
+			productReference = 94E7447E218728F5007149B5 /* SwiftGoogleTranslateDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -110,7 +110,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 94E74479218728F5007149B5 /* Build configuration list for PBXProject "SwiftGoogleTranslate" */;
+			buildConfigurationList = 94E74479218728F5007149B5 /* Build configuration list for PBXProject "SwiftGoogleTranslateDemo" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -123,7 +123,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				94E7447D218728F5007149B5 /* SwiftGoogleTranslate */,
+				94E7447D218728F5007149B5 /* SwiftGoogleTranslateDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -331,7 +331,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		94E74479218728F5007149B5 /* Build configuration list for PBXProject "SwiftGoogleTranslate" */ = {
+		94E74479218728F5007149B5 /* Build configuration list for PBXProject "SwiftGoogleTranslateDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94E7448E218728FA007149B5 /* Debug */,
@@ -340,7 +340,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		94E74490218728FA007149B5 /* Build configuration list for PBXNativeTarget "SwiftGoogleTranslate" */ = {
+		94E74490218728FA007149B5 /* Build configuration list for PBXNativeTarget "SwiftGoogleTranslateDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94E74491218728FA007149B5 /* Debug */,
