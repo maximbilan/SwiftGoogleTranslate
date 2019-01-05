@@ -32,25 +32,25 @@ Copy <i>SwiftGoogleTranslate.swift</i> to your project.
 
 First of all you have to generate API key to use Google Cloud services in the <a href="https://cloud.google.com/translate/">console</a>.
 And then use the following code:
-<pre>
+```swift
 SwiftGoogleTranslate.shared.start(with: "API_KEY_HERE")
-</pre>
+```
 
 ## Using
 
 The framework supports 3 endpoinds: <i>translate</i>, <i>detect</i>, <i>languages</i>. You can find more information in the official source. How to use from the framework.
 
 Translation:
-<pre>
+```swift
 SwiftGoogleTranslate.shared.translate("Hello!", "es", "en") { (text, error) in
   if let t = text {
     print(t)
   }
 }
-</pre>
+```
 
 Detection:
-<pre>
+```swift
 SwiftGoogleTranslate.shared.detect("¡Hola!") { (detections, error) in
   if let detections = detections {
     for detection in detections {
@@ -61,10 +61,10 @@ SwiftGoogleTranslate.shared.detect("¡Hola!") { (detections, error) in
     }
   }
 }
-</pre>
+```
 
 A list of languages:
-<pre>
+```swift
 SwiftGoogleTranslate.shared.languages { (languages, error) in
   if let languages = languages {
     for language in languages {
@@ -74,7 +74,7 @@ SwiftGoogleTranslate.shared.languages { (languages, error) in
     }
   }
 }
-</pre>
+```
 
 ## License
 
