@@ -97,6 +97,8 @@ public class SwiftGoogleTranslate {
 		}
 		
 		var urlRequest = URLRequest(url: url)
+		urlRequest.setValue(Bundle.main.bundleIdentifier ?? "", forHTTPHeaderField: "X-Ios-Bundle-Identifier")
+		
 		urlRequest.httpMethod = API.translate.method
 		
 		let task = session.dataTask(with: urlRequest) { (data, response, error) in
@@ -141,6 +143,7 @@ public class SwiftGoogleTranslate {
 		}
 		
 		var urlRequest = URLRequest(url: url)
+		urlRequest.setValue(Bundle.main.bundleIdentifier ?? "", forHTTPHeaderField: "X-Ios-Bundle-Identifier")
 		urlRequest.httpMethod = API.detect.method
 		
 		let task = session.dataTask(with: urlRequest) { (data, response, error) in
@@ -196,6 +199,7 @@ public class SwiftGoogleTranslate {
 		}
 		
 		var urlRequest = URLRequest(url: url)
+		urlRequest.setValue(Bundle.main.bundleIdentifier ?? "", forHTTPHeaderField: "X-Ios-Bundle-Identifier")
 		urlRequest.httpMethod = API.languages.method
 		
 		let task = session.dataTask(with: urlRequest) { (data, response, error) in
