@@ -28,7 +28,7 @@ public class SwiftGoogleTranslate {
 	}
 	
 	/// API structure.
-	private struct API {
+	public struct API {
 		/// Base Google Translation API url.
 		static let base = "https://translation.googleapis.com/language/translate/v2"
 		
@@ -52,9 +52,9 @@ public class SwiftGoogleTranslate {
 	}
 	
 	/// API key.
-	private var apiKey: String!
+	public var apiKey: String!
 	/// Default URL session.
-	private let session = URLSession(configuration: .default)
+	public let session = URLSession(configuration: .default)
 	
 	/**
 		Initialization.
