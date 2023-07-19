@@ -114,7 +114,7 @@ public class SwiftGoogleTranslate {
 				completion(nil, error)
 				return
 			}
-			print("asd", object)
+
 			completion(translatedText, nil)
 		}
 		task.resume()
