@@ -76,9 +76,9 @@ public class SwiftGoogleTranslate {
 			- source: The language of the source text. If the source language is not specified, the API will attempt to detect the source language automatically and return it within the response.
 			- model: The translation model. Can be either base to use the Phrase-Based Machine Translation (PBMT) model, or nmt to use the Neural Machine Translation (NMT) model. If omitted, then nmt is used. If the model is nmt, and the requested language translation pair is not supported for the NMT model, then the request is translated using the base model.
 	*/
-	public func translate(_ q: String, _ target: String, _ source: String, _ format: String = "text", _ model: String = "base", _ completion: @escaping ((_ text: String?, _ error: Error?) -> Void)) {
+	public func translate(_ q: String, _ target: String, _ source: String, _ format: String = "text", _ model: String = "base", _ completion: @escaping ((_ text: String?, _ source: String?, _ error: Error?) -> Void)) {
 		guard var urlComponents = URLComponents(string: API.translate.url) else {
-			completion(nil, nil)
+			completion(nil, nil, nil)
 			return
 		}
 		
@@ -92,7 +92,7 @@ public class SwiftGoogleTranslate {
 		urlComponents.queryItems = queryItems
 		
 		guard let url = urlComponents.url else {
-			completion(nil, nil)
+			completion(nil, nil, nil)
 			return
 		}
 		
@@ -106,16 +106,16 @@ public class SwiftGoogleTranslate {
 				let response = response as? HTTPURLResponse,	// is there HTTP response
 				(200 ..< 300) ~= response.statusCode,			// is statusCode 2XX
 				error == nil else {								// was there no error, otherwise ...
-					completion(nil, error)
+					completion(nil, nil, error)
 					return
 			}
 			
 			guard let object = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any], let d = object["data"] as? [String: Any], let translations = d["translations"] as? [[String: String]], let translation = translations.first, let translatedText = translation["translatedText"] else {
-				completion(nil, error)
+				completion(nil, nil, error)
 				return
 			}
 
-			completion(translatedText, nil)
+			completion(translatedText, translation["detectedSourceLanguage"] ?? source, nil)
 		}
 		task.resume()
 	}
