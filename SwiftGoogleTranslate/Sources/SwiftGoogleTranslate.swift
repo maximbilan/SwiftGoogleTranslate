@@ -28,7 +28,7 @@ public class SwiftGoogleTranslate {
 	}
 	
 	/// API structure.
-	private struct API {
+	public struct API {
 		/// Base Google Translation API url.
 		static let base = "https://translation.googleapis.com/language/translate/v2"
 		
@@ -52,9 +52,9 @@ public class SwiftGoogleTranslate {
 	}
 	
 	/// API key.
-	private var apiKey: String!
+	public var apiKey: String!
 	/// Default URL session.
-	private let session = URLSession(configuration: .default)
+	public let session = URLSession(configuration: .default)
 	
 	/**
 		Initialization.
@@ -76,9 +76,9 @@ public class SwiftGoogleTranslate {
 			- source: The language of the source text. If the source language is not specified, the API will attempt to detect the source language automatically and return it within the response.
 			- model: The translation model. Can be either base to use the Phrase-Based Machine Translation (PBMT) model, or nmt to use the Neural Machine Translation (NMT) model. If omitted, then nmt is used. If the model is nmt, and the requested language translation pair is not supported for the NMT model, then the request is translated using the base model.
 	*/
-	public func translate(_ q: String, _ target: String, _ source: String, _ format: String = "text", _ model: String = "base", _ completion: @escaping ((_ text: String?, _ error: Error?) -> Void)) {
+	public func translate(_ q: String, _ target: String, _ source: String, _ format: String = "text", _ model: String = "base", _ completion: @escaping ((_ text: String?, _ source: String?, _ error: Error?) -> Void)) {
 		guard var urlComponents = URLComponents(string: API.translate.url) else {
-			completion(nil, nil)
+			completion(nil, nil, nil)
 			return
 		}
 		
@@ -92,11 +92,13 @@ public class SwiftGoogleTranslate {
 		urlComponents.queryItems = queryItems
 		
 		guard let url = urlComponents.url else {
-			completion(nil, nil)
+			completion(nil, nil, nil)
 			return
 		}
 		
 		var urlRequest = URLRequest(url: url)
+		urlRequest.setValue(Bundle.main.bundleIdentifier ?? "", forHTTPHeaderField: "X-Ios-Bundle-Identifier")
+		
 		urlRequest.httpMethod = API.translate.method
 		
 		let task = session.dataTask(with: urlRequest) { (data, response, error) in
@@ -104,16 +106,16 @@ public class SwiftGoogleTranslate {
 				let response = response as? HTTPURLResponse,	// is there HTTP response
 				(200 ..< 300) ~= response.statusCode,			// is statusCode 2XX
 				error == nil else {								// was there no error, otherwise ...
-					completion(nil, error)
+					completion(nil, nil, error)
 					return
 			}
 			
 			guard let object = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any], let d = object["data"] as? [String: Any], let translations = d["translations"] as? [[String: String]], let translation = translations.first, let translatedText = translation["translatedText"] else {
-				completion(nil, error)
+				completion(nil, nil, error)
 				return
 			}
-			
-			completion(translatedText, nil)
+
+			completion(translatedText, translation["detectedSourceLanguage"] ?? source, nil)
 		}
 		task.resume()
 	}
@@ -141,6 +143,7 @@ public class SwiftGoogleTranslate {
 		}
 		
 		var urlRequest = URLRequest(url: url)
+		urlRequest.setValue(Bundle.main.bundleIdentifier ?? "", forHTTPHeaderField: "X-Ios-Bundle-Identifier")
 		urlRequest.httpMethod = API.detect.method
 		
 		let task = session.dataTask(with: urlRequest) { (data, response, error) in
@@ -196,6 +199,7 @@ public class SwiftGoogleTranslate {
 		}
 		
 		var urlRequest = URLRequest(url: url)
+		urlRequest.setValue(Bundle.main.bundleIdentifier ?? "", forHTTPHeaderField: "X-Ios-Bundle-Identifier")
 		urlRequest.httpMethod = API.languages.method
 		
 		let task = session.dataTask(with: urlRequest) { (data, response, error) in
