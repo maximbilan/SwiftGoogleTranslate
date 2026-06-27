@@ -1,9 +1,8 @@
 ## SwiftGoogleTranslate
 
-[![Version](https://img.shields.io/cocoapods/v/SwiftGoogleTranslate.svg?style=flat)](http://cocoadocs.org/docsets/SwiftGoogleTranslate)
-[![License](https://img.shields.io/cocoapods/l/SwiftGoogleTranslate.svg?style=flat)](http://cocoadocs.org/docsets/SwiftGoogleTranslate)
-[![Platform](https://img.shields.io/cocoapods/p/SwiftGoogleTranslate.svg?style=flat)](http://cocoadocs.org/docsets/SwiftGoogleTranslate)
-[![CocoaPods](https://img.shields.io/cocoapods/dt/SwiftGoogleTranslate.svg)](https://cocoapods.org/pods/SwiftGoogleTranslate)
+[![Version](https://img.shields.io/cocoapods/v/SwiftGoogleTranslate.svg?style=flat)](https://cocoapods.org/pods/SwiftGoogleTranslate)
+[![License](https://img.shields.io/cocoapods/l/SwiftGoogleTranslate.svg?style=flat)](https://cocoapods.org/pods/SwiftGoogleTranslate)
+[![Platform](https://img.shields.io/cocoapods/p/SwiftGoogleTranslate.svg?style=flat)](https://cocoapods.org/pods/SwiftGoogleTranslate)
 
 A framework to use [Cloud Translation API by Google](https://cloud.google.com/translate/docs/reference/rest) in Swift.
 :snowman::frog::penguin::whale::turtle:
