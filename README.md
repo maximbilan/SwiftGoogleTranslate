@@ -5,42 +5,49 @@
 [![Platform](https://img.shields.io/cocoapods/p/SwiftGoogleTranslate.svg?style=flat)](http://cocoadocs.org/docsets/SwiftGoogleTranslate)
 [![CocoaPods](https://img.shields.io/cocoapods/dt/SwiftGoogleTranslate.svg)](https://cocoapods.org/pods/SwiftGoogleTranslate)
 
-A framework to use <a href="https://cloud.google.com/translate/docs/reference/rest">Cloud Translation API by Google</a> in Swift.
+A framework to use [Cloud Translation API by Google](https://cloud.google.com/translate/docs/reference/rest) in Swift.
 :snowman::frog::penguin::whale::turtle:
 
 ## Installation
-<b>CocoaPods:</b>
-<pre>
+
+**CocoaPods:**
+
+```ruby
 pod 'SwiftGoogleTranslate'
-</pre>
-<b>Carthage:</b>
-<pre>
+```
+
+**Carthage:**
+
+```
 github "maximbilan/SwiftGoogleTranslate"
-</pre>
-<b>Swift Package Manager:</b>
-<pre>
+```
+
+**Swift Package Manager:**
+
+```swift
 dependencies: [
-    .package(url: "https://github.com/maximbilan/SwiftGoogleTranslate", from: "0.2.2"))
+    .package(url: "https://github.com/maximbilan/SwiftGoogleTranslate", from: "0.2.1")
 ]
-</pre>
-<b>Manual:</b>
-<pre>
-Copy <i>SwiftGoogleTranslate.swift</i> to your project.
-</pre>
+```
+
+**Manual:**
+
+Copy `SwiftGoogleTranslate.swift` to your project.
 
 ## Initialization
 
-First of all you have to generate API key to use Google Cloud services in the <a href="https://cloud.google.com/translate/">console</a>.
-And then use the following code:
+First of all you have to generate an API key to use Google Cloud services in the [console](https://cloud.google.com/translate/). Then use the following code:
+
 ```swift
 SwiftGoogleTranslate.shared.start(with: "API_KEY_HERE")
 ```
 
 ## Using
 
-The framework supports 3 endpoinds: <i>translate</i>, <i>detect</i>, <i>languages</i>. You can find more information in the official source. How to use from the framework.
+The framework supports 3 endpoints: `translate`, `detect`, and `languages`. You can find more information in the [official documentation](https://cloud.google.com/translate/docs/reference/rest).
 
 Translation:
+
 ```swift
 SwiftGoogleTranslate.shared.translate("Hello!", "es", "en") { (text, error) in
   if let t = text {
@@ -50,6 +57,7 @@ SwiftGoogleTranslate.shared.translate("Hello!", "es", "en") { (text, error) in
 ```
 
 Detection:
+
 ```swift
 SwiftGoogleTranslate.shared.detect("¡Hola!") { (detections, error) in
   if let detections = detections {
@@ -64,6 +72,7 @@ SwiftGoogleTranslate.shared.detect("¡Hola!") { (detections, error) in
 ```
 
 A list of languages:
+
 ```swift
 SwiftGoogleTranslate.shared.languages { (languages, error) in
   if let languages = languages {
@@ -78,4 +87,4 @@ SwiftGoogleTranslate.shared.languages { (languages, error) in
 
 ## License
 
-<i>SwiftGoogleTranslate</i> is available under the MIT license. See the LICENSE file for more info.
+`SwiftGoogleTranslate` is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
